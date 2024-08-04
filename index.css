@@ -1,0 +1,26 @@
+@import url("@fontsource/roboto/300.css");
+@import url("@fontsource/roboto/400.css");
+@import url("@fontsource/roboto/500.css");
+@import url("@fontsource/roboto/700.css");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+}
+
+.link:link,
+.link:visited,
+.link:active,
+.link:hover {
+  text-decoration: none;
+  color: #000;
+}
+ul.slick-dots {
+  bottom: -60px;
+  /* right: 60px; */
+}
