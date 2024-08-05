@@ -16,9 +16,11 @@ import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../contexts/CartContext";
+import { useProducts } from "../../contexts/ProductsContext";
 
 function ProductCard({ product }) {
-  const { dispatch, cart } = useCart();
+  const { dispatch: cartDispatch, cart } = useCart();
+  const { dispatch } = useProducts();
   const navigate = useNavigate();
   function shortTitle(str) {
     return str.split(" ").length > 2
@@ -29,6 +31,13 @@ function ProductCard({ product }) {
   function handleToggleFavorite(e, product) {
     e.stopPropagation();
     dispatch({ type: "product/toggleFavorite", payload: product.id });
+    dispatch({ type: "searchProducts/toggleFavorite", payload: product.id });
+
+    dispatch({
+      type: "cateoryProducts/toggleFavorite",
+      payload: product.id,
+    });
+    console.log(product.id);
   }
 
   return (
@@ -192,7 +201,7 @@ function ProductCard({ product }) {
               color: "#000",
             },
           }}
-          onClick={(e) => handleAddToCart(e, product, cart, dispatch)}
+          onClick={(e) => handleAddToCart(e, product, cart, cartDispatch)}
         >
           <AddShoppingCartIcon />{" "}
           <span style={{ marginLeft: "8px" }}>Add to cart</span>

@@ -4,7 +4,7 @@ import PageNav from "../features/page-nav/PageNav";
 import { useProducts } from "../contexts/ProductsContext";
 import SortProduct from "../features/sortProduct/SortProduct";
 import ProductCard from "../features/productCard/ProductCard";
-import SnackBar from "../features/cart/SnackBar";
+import SnackBar from "../features/snackbars/SnackBar";
 
 function SearchPage() {
   const { isLoading, isError, sortedProducts, searchedProducts } =

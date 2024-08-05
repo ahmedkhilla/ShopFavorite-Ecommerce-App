@@ -4,8 +4,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FirstHomePage from "../../assets/homePage-1.jpg";
 import SecondHomePage from "../../assets/homepage-2.jpg";
+import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 // import ThirdHomePage from "../../assets/homePage-3.jpg";
 function SliderHomePage() {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   var settings = {
     dots: true,
     autoplay: true,
@@ -66,17 +70,33 @@ function SliderHomePage() {
                 Everything you need about finding your product, where it will be
                 easier for you
               </Typography>
-              <Button
-                variant="contained"
-                sx={{
-                  textTransform: "capitalize",
-                  backgroundColor: "#10B981",
-                  width: "200px",
-                  borderRadius: 4,
-                }}
-              >
-                Login
-              </Button>
+              {isAuthenticated ? (
+                <Button
+                  variant="contained"
+                  sx={{
+                    textTransform: "capitalize",
+                    backgroundColor: "#10B981",
+                    width: "200px",
+                    borderRadius: 4,
+                  }}
+                  onClick={() => navigate("/products")}
+                >
+                  Our Products
+                </Button>
+              ) : (
+                <Button
+                  variant="contained"
+                  sx={{
+                    textTransform: "capitalize",
+                    backgroundColor: "#10B981",
+                    width: "200px",
+                    borderRadius: 4,
+                  }}
+                  onClick={() => navigate("/register")}
+                >
+                  Login
+                </Button>
+              )}
             </Box>
           </Grid>
           <Grid

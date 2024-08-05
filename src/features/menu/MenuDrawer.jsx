@@ -109,51 +109,49 @@ function MenuDrawer() {
             </ListItemButton>
           </ListItem>
 
-          <ListItem disablePadding>
+          {/* <ListItem disablePadding>
             <ListItemButton
-              component={Link}
-              href="/#categories"
-              onClick={() =>
-                dispatch({ type: "drawer.toggle", payload: false })
-              }
+            // onClick={() =>
+            //   dispatch({ type: "drawer.toggle", payload: false })
+            // }
             >
               <ListItemIcon>
                 <CategoryIcon />
               </ListItemIcon>
               <ListItemText primary="Categories" />
             </ListItemButton>
+          </ListItem> */}
+
+          <ListItem disablePadding>
+            <ListItemButton
+              onClick={() => {
+                navigate("/add=product-form");
+                dispatch({ type: "drawer/toggle", payload: false });
+              }}
+            >
+              <ListItemIcon>
+                <EnhancedEncryptionIcon />
+              </ListItemIcon>
+              <ListItemText primary="Add a Product" />
+            </ListItemButton>
           </ListItem>
+
+          <ListItem disablePadding>
+            <ListItemButton
+              onClick={() => {
+                navigate("/support");
+                dispatch({ type: "drawer/toggle", payload: false });
+              }}
+            >
+              <ListItemIcon>
+                <SupportAgentIcon />
+              </ListItemIcon>
+              <ListItemText primary="Conact our Support" />
+            </ListItemButton>
+          </ListItem>
+          <CategoriesSelect />
         </List>
-
-        <ListItem disablePadding>
-          <ListItemButton
-            onClick={() => {
-              navigate("/add=product-form");
-              dispatch({ type: "drawer/toggle", payload: false });
-            }}
-          >
-            <ListItemIcon>
-              <EnhancedEncryptionIcon />
-            </ListItemIcon>
-            <ListItemText primary="Add a Product" />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton
-            onClick={() => {
-              navigate("/support");
-              dispatch({ type: "drawer/toggle", payload: false });
-            }}
-          >
-            <ListItemIcon>
-              <SupportAgentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Conact our Support" />
-          </ListItemButton>
-        </ListItem>
       </Box>
-      <CategoriesSelect />
     </Drawer>
   );
 }

@@ -2,13 +2,14 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ProductCard from "../productCard/ProductCard";
 import { sortRatingHighToLow } from "../sortProduct/sortFunctions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useProducts } from "../../contexts/ProductsContext";
-import SnackBar from "../cart/SnackBar";
+import SnackBar from "../snackbars/SnackBar";
 
 function FeaturedProducts() {
   const { products } = useProducts();
   const featuredProducts = sortRatingHighToLow(products);
+  const navigate = useNavigate();
   return (
     <Box sx={{ pb: 10 }}>
       <Grid
@@ -44,6 +45,7 @@ function FeaturedProducts() {
                 background: "#10B981",
               },
             }}
+            onClick={() => navigate("/products")}
           >
             <Typography>See More</Typography>
             <ArrowForwardIosIcon fontSize="small" sx={{ ml: 0.5 }} />

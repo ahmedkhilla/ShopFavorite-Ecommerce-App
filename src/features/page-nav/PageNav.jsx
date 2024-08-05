@@ -21,10 +21,15 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useAuth } from "../../contexts/AuthContext";
 import LogoutConfirm from "../logoutDialog/LogoutConfirm";
 import { useProducts } from "../../contexts/ProductsContext";
+import { useCart } from "../../contexts/CartContext";
 
 function PageNav() {
   const { isAuthenticated, logoutDialogOpen } = useAuth();
-  const { dispatch } = useProducts();
+  const { cart } = useCart();
+  const { dispatch, products } = useProducts();
+  const favoriteProducts = products.filter(
+    (product) => product.favoriteStatus === true
+  );
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -153,21 +158,33 @@ function PageNav() {
         </IconButton>
         <p>Sign up</p>
       </MenuItem>
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
+      <MenuItem
+        onClick={() =>
+          isAuthenticated ? navigate("/cart") : navigate("/register")
+        }
+      >
+        <IconButton
+          size="large"
+          aria-label={`show ${cart.length} new mails`}
+          color="inherit"
+        >
+          <Badge badgeContent={cart.length} color="error">
             <ShoppingCartCheckoutIcon />
           </Badge>
         </IconButton>
         <p>My Cart</p>
       </MenuItem>
-      <MenuItem>
+      <MenuItem
+        onClick={() =>
+          isAuthenticated ? navigate("/favorite") : navigate("/register")
+        }
+      >
         <IconButton
           size="large"
-          aria-label="show 17 new notifications"
+          aria-label={`show ${favoriteProducts.length} new notifications`}
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
+          <Badge badgeContent={favoriteProducts.length} color="error">
             <FavoriteBorderIcon />
           </Badge>
         </IconButton>

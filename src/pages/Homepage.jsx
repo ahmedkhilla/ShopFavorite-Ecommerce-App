@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import PageNav from "../features/page-nav/PageNav";
 import SliderHomePage from "../features/slider/SliderHomePage";
 import CategoriesGroup from "../features/categories/CategoriesGroup";
@@ -6,10 +6,11 @@ import FeaturedProducts from "../features/featured-products/FeaturedProducts";
 import ReviewSlider from "../features/slider/ReviewSlider";
 import SubScribe from "../features/subscribe/SubScribe";
 import Footer from "../features/footer/Footer";
+import AuthSnackBar from "../features/snackbars/AuthSnackBar";
 
 function Homepage() {
   return (
-    <div>
+    <>
       <PageNav />
       <Container
         sx={{
@@ -71,7 +72,8 @@ function Homepage() {
         <SubScribe />
       </Container>
       <Footer />
-    </div>
+      <AuthSnackBar />
+    </>
   );
 }
 

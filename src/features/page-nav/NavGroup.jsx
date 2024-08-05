@@ -24,8 +24,15 @@ function NavGroup({
   return (
     <>
       <Box sx={{ display: { xs: "none", md: "flex", alignItems: "center" } }}>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Link to="/cart" className={styles.link}>
+        <IconButton
+          size="large"
+          aria-label={`show ${cart.length} new mails`}
+          color="inherit"
+        >
+          <Link
+            to={isAuthenticated ? "/cart" : "/register"}
+            className={styles.link}
+          >
             <Badge badgeContent={cart.length} color="error">
               <ShoppingCartCheckoutIcon
                 sx={{
@@ -40,10 +47,13 @@ function NavGroup({
         </IconButton>
         <IconButton
           size="large"
-          aria-label="show 17 new notifications"
+          aria-label={`show ${favoriteProducts.length} new notifications`}
           color="inherit"
         >
-          <Link to="/favorite" className={styles.link}>
+          <Link
+            to={isAuthenticated ? "/favorite" : "/register"}
+            className={styles.link}
+          >
             <Badge badgeContent={favoriteProducts.length} color="error">
               <FavoriteBorderIcon
                 sx={{
