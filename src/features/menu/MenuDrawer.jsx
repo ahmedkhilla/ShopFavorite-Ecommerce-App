@@ -1,7 +1,6 @@
 import {
   Box,
   Drawer,
-  Link,
   List,
   ListItem,
   ListItemButton,
@@ -12,7 +11,6 @@ import {
 import StoreIcon from "@mui/icons-material/Store";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-import CategoryIcon from "@mui/icons-material/Category";
 import EnhancedEncryptionIcon from "@mui/icons-material/EnhancedEncryption";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import StorefrontIcon from "@mui/icons-material/Storefront";
@@ -20,7 +18,11 @@ import { useNavigate } from "react-router-dom";
 import { useProducts } from "../../contexts/ProductsContext";
 import CategoriesSelect from "../categories/CategoriesSelect";
 
+import { useAuth } from "../../contexts/AuthContext";
+
 function MenuDrawer() {
+  const { isAuthenticated } = useAuth();
+
   const navigate = useNavigate();
   const { drawer, dispatch } = useProducts();
   return (
@@ -84,7 +86,7 @@ function MenuDrawer() {
           <ListItem disablePadding>
             <ListItemButton
               onClick={() => {
-                navigate("/favorite");
+                isAuthenticated ? navigate("/favorite") : navigate("/register");
                 dispatch({ type: "drawer/toggle", payload: false });
               }}
             >
@@ -98,7 +100,7 @@ function MenuDrawer() {
           <ListItem disablePadding>
             <ListItemButton
               onClick={() => {
-                navigate("/cart");
+                isAuthenticated ? navigate("/cart") : navigate("/register");
                 dispatch({ type: "drawer/toggle", payload: false });
               }}
             >
