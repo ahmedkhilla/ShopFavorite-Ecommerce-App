@@ -3,7 +3,8 @@ import PageNav from "../features/page-nav/PageNav";
 import SortProduct from "../features/sortProduct/SortProduct";
 import { useProducts } from "../contexts/ProductsContext";
 import ProductCard from "../features/productCard/ProductCard";
-import SnackBar from "../features/cart/SnackBar";
+import SnackBar from "../features/snackbars/SnackBar";
+import Footer from "../features/footer/Footer";
 function AllProductsPage() {
   const { products, isLoading, isError, sortedProducts } = useProducts();
   return (
@@ -50,6 +51,7 @@ function AllProductsPage() {
         )}
         <SnackBar />
       </Container>
+      <Footer />
     </div>
   );
 }

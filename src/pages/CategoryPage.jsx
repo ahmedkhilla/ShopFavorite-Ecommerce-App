@@ -3,7 +3,7 @@ import PageNav from "../features/page-nav/PageNav";
 import SortProduct from "../features/sortProduct/SortProduct";
 import { useProducts } from "../contexts/ProductsContext";
 import ProductCard from "../features/productCard/ProductCard";
-import SnackBar from "../features/cart/SnackBar";
+import SnackBar from "../features/snackbars/SnackBar";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";

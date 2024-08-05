@@ -17,7 +17,7 @@ import StarIcon from "@mui/icons-material/Star";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import Footer from "../features/footer/Footer";
-import SnackBar from "../features/cart/SnackBar";
+import SnackBar from "../features/snackbars/SnackBar";
 import { useCart } from "../contexts/CartContext";
 import { handleAddToCart } from "../utilites/helpers";
 const API_URL = import.meta.env.VITE_API_URL;

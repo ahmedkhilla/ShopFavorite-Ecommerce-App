@@ -1,7 +1,7 @@
 // import { Box } from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
-import { IconButton, InputBase } from "@mui/material";
+import { InputBase } from "@mui/material";
 
 import { useProducts } from "../../contexts/ProductsContext";
 import { useState } from "react";
@@ -62,20 +62,19 @@ function SearchBar() {
     <>
       <form onSubmit={handleSubmit}>
         <Search>
-          <IconButton type="submit">
-            <SearchIconWrapper sx={{ cursor: "pointer" }}>
-              <SearchIcon
-                sx={{
-                  fontSize: {
-                    xs: "1.25rem",
-                    sm: "1.3rem",
-                    md: "1.5rem",
-                    lg: "1.6rem",
-                  },
-                }}
-              />
-            </SearchIconWrapper>
-          </IconButton>
+          <SearchIconWrapper>
+            <SearchIcon
+              sx={{
+                fontSize: {
+                  xs: "1.25rem",
+                  sm: "1.3rem",
+                  md: "1.5rem",
+                  lg: "1.6rem",
+                },
+                cursor: "pointer",
+              }}
+            />
+          </SearchIconWrapper>
           <StyledInputBase
             placeholder="Looking for a product!"
             inputProps={{ "aria-label": "search" }}

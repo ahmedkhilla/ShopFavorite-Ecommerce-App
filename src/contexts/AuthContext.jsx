@@ -6,6 +6,9 @@ const initialState = {
   isAuthenticated: false,
   error: false,
   logoutDialog: false,
+  snackOpen: false,
+  snackMessage: "",
+  snackSeverity: "success",
 };
 
 const FAKE_USER = {
@@ -32,32 +35,78 @@ function reducer(state, action) {
       return { ...state, logoutDialog: true };
     case "logout/close":
       return { ...state, logoutDialog: false };
+
+    case "snackbar/open":
+      return {
+        ...state,
+        snackOpen: true,
+      };
+    case "snackbar/close":
+      return {
+        ...state,
+        snackOpen: false,
+      };
+    case "snackbar/severity":
+      return {
+        ...state,
+        snackSeverity: action.payload,
+      };
+    case "snackbar/message":
+      return {
+        ...state,
+        snackMessage: action.payload,
+      };
     default:
       throw new Error("Unknown Error");
   }
 }
 
 function AuthProvider({ children }) {
-  const [{ error, user, isAuthenticated, logoutDialog }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [
+    {
+      error,
+      user,
+      isAuthenticated,
+      logoutDialog,
+      snackOpen,
+      snackSeverity,
+      snackMessage,
+    },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   function login(email, password) {
     if (email === FAKE_USER.email && password === FAKE_USER.password) {
       dispatch({ type: "login", payload: FAKE_USER });
+      dispatch({ type: "snackbar/open" });
+      dispatch({ type: "snackbar/severity", payload: "success" });
+      dispatch({
+        type: "snackbar/message",
+        payload: "Your signed in successfuly",
+      });
     } else {
       dispatch({ type: "error" });
+      dispatch({ type: "snackbar/open" });
+      dispatch({ type: "snackbar/severity", payload: "error" });
+      dispatch({
+        type: "snackbar/message",
+        payload: "There is a problem in signing in, please try again later ",
+      });
     }
   }
 
   function logout() {
     dispatch({ type: "logout" });
+    dispatch({ type: "snackbar/open" });
+    dispatch({ type: "snackbar/severity", payload: "success" });
+    dispatch({
+      type: "snackbar/message",
+      payload: "Your signed out successfuly",
+    });
   }
 
   function logoutDialogOpen() {
     dispatch({ type: "logout/open" });
-    console.log("opened");
   }
 
   function logoutDialogClose() {
@@ -75,6 +124,9 @@ function AuthProvider({ children }) {
         logoutDialogOpen,
         logoutDialogClose,
         dispatch,
+        snackOpen,
+        snackSeverity,
+        snackMessage,
       }}
     >
       {children}

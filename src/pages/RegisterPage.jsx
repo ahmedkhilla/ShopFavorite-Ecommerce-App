@@ -21,7 +21,6 @@ function RegisterPage() {
   const [email, setEmail] = useState("ex@gmail.com");
   const [password, setPassword] = useState("12345678");
   const navigate = useNavigate();
-
   const [snackbarState, setSnackbarState] = useState({
     open: false,
     vertical: "top",

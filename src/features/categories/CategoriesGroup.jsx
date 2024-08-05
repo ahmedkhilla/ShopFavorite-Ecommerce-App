@@ -20,12 +20,12 @@ function CategoriesGroup() {
             sx={{
               width: "100%",
               height: "50px",
-              color: `${i === 2 ? "#ffffff" : "#8A8A8A"}`,
-              backgroundColor: `${i === 2 ? "#10B981" : "#E0E3EB"}`,
+              color: "#8A8A8A",
+              backgroundColor: "#E0E3EB",
               textTransform: "capitalize",
               "&:hover": {
-                color: `${i === 2 ? "#ffffff" : "#8A8A8A"}`,
-                backgroundColor: `${i === 2 ? "#10B981" : "#E0E3EB"}`,
+                backgroundColor: "#10B981",
+                color: "#E0E3EB",
               },
             }}
             onClick={() => navigate(`/category/${item.slug}`)}

@@ -79,10 +79,28 @@ function reducer(state, action) {
       return { ...state, slug: action.payload };
     case "cateoryProducts/dataArrive":
       return { ...state, categoryProducts: action.payload, isLoading: false };
+    case "cateoryProducts/toggleFavorite":
+      return {
+        ...state,
+        categoryProducts: state.categoryProducts.map((item) =>
+          item.id === action.payload
+            ? { ...item, favoriteStatus: !item.favoriteStatus }
+            : item
+        ),
+      };
     case "search/searchQuery":
       return { ...state, searchQuery: action.payload };
     case "searchProducts/dataArrive":
       return { ...state, searchedProducts: action.payload };
+    case "searchProducts/toggleFavorite":
+      return {
+        ...state,
+        searchedProducts: state.searchedProducts.map((item) =>
+          item.id === action.payload
+            ? { ...item, favoriteStatus: !item.favoriteStatus }
+            : item
+        ),
+      };
     default:
       throw new Error("Unknown Error");
   }
