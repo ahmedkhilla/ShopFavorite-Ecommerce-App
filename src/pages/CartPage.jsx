@@ -4,8 +4,28 @@ import CartTable from "../features/cart/CartTable";
 import CartSideBar from "../features/cart/CartSideBar";
 import { useCart } from "../contexts/CartContext";
 import NoCartItems from "../assets/noCartItems.png";
+import { useEffect } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { useLocation, useNavigate } from "react-router-dom";
 function CartPage() {
   const { cart } = useCart();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(
+    function () {
+      if (!isAuthenticated) {
+        navigate("/register", {
+          state: {
+            previousURL: location.pathname,
+          },
+        });
+      }
+    },
+    [isAuthenticated, navigate, location]
+  );
+
   return (
     <>
       <PageNav />

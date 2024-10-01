@@ -29,10 +29,7 @@ function NavGroup({
           aria-label={`show ${cart.length} new mails`}
           color="inherit"
         >
-          <Link
-            to={isAuthenticated ? "/cart" : "/register"}
-            className={styles.link}
-          >
+          <Link to="/cart" className={styles.link}>
             <Badge badgeContent={cart.length} color="error">
               <ShoppingCartCheckoutIcon
                 sx={{
@@ -50,10 +47,7 @@ function NavGroup({
           aria-label={`show ${favoriteProducts.length} new notifications`}
           color="inherit"
         >
-          <Link
-            to={isAuthenticated ? "/favorite" : "/register"}
-            className={styles.link}
-          >
+          <Link to="/favorite" className={styles.link}>
             <Badge badgeContent={favoriteProducts.length} color="error">
               <FavoriteBorderIcon
                 sx={{

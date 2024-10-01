@@ -31,9 +31,9 @@ function App() {
               <Route
                 path="cart"
                 element={
-                  <ProtectedRoute>
-                    <CartPage />
-                  </ProtectedRoute>
+                  // <ProtectedRoute>
+                  <CartPage />
+                  /* </ProtectedRoute> */
                 }
               />
               <Route path="/category/:slug" element={<CategoryPage />} />
@@ -42,9 +42,9 @@ function App() {
               <Route
                 path="favorite"
                 element={
-                  <ProtectedRoute>
-                    <FavoritePage />
-                  </ProtectedRoute>
+                  // <ProtectedRoute>
+                  <FavoritePage />
+                  /* </ProtectedRoute> */
                 }
               />
               <Route path="/support" element={<SupportPage />} />

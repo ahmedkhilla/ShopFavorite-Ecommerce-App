@@ -13,7 +13,7 @@ import GmailIcon from "../assets/gmail.png";
 import AppleIcon from "../assets/apple.png";
 import FacebookIcon from "../assets/facebook.png";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 function RegisterPage() {
@@ -27,6 +27,8 @@ function RegisterPage() {
     horizontal: "center",
   });
   const { vertical, horizontal, open } = snackbarState;
+
+  const location = useLocation();
 
   const handleClose = () => {
     setSnackbarState({ ...snackbarState, open: false });
@@ -43,13 +45,18 @@ function RegisterPage() {
   }
 
   useEffect(() => {
+    console.log(location);
     if (isAuthenticated) {
-      navigate("/", { replace: true });
+      if (location?.state?.previousURL) {
+        navigate(location?.state?.previousURL);
+      } else {
+        navigate("/", { replace: true });
+      }
     }
     if (error) {
       setSnackbarState((prevState) => ({ ...prevState, open: true }));
     }
-  }, [isAuthenticated, error, navigate]);
+  }, [isAuthenticated, error, navigate, location]);
 
   return (
     <Box component="section" className={styles.registerSection}>

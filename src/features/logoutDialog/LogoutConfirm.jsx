@@ -39,7 +39,7 @@ function LogoutConfirm() {
               <LogoutIcon sx={{ fontSize: 50, color: "#EE636D" }} />
             </IconButton>
           </div>
-          <Typography variant="h6" sx={{ fontSize: "22px", mt: 3.5 }}>
+          <Typography sx={{ fontSize: "22px", fontWeight: 600, mt: 3.5 }}>
             Logout
           </Typography>
         </DialogTitle>

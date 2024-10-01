@@ -158,11 +158,7 @@ function PageNav() {
         </IconButton>
         <p>Sign up</p>
       </MenuItem>
-      <MenuItem
-        onClick={() =>
-          isAuthenticated ? navigate("/cart") : navigate("/register")
-        }
-      >
+      <MenuItem onClick={() => navigate("/cart")}>
         <IconButton
           size="large"
           aria-label={`show ${cart.length} new mails`}
@@ -174,11 +170,7 @@ function PageNav() {
         </IconButton>
         <p>My Cart</p>
       </MenuItem>
-      <MenuItem
-        onClick={() =>
-          isAuthenticated ? navigate("/favorite") : navigate("/register")
-        }
-      >
+      <MenuItem onClick={() => navigate("/favorite")}>
         <IconButton
           size="large"
           aria-label={`show ${favoriteProducts.length} new notifications`}
