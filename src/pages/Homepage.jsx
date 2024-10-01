@@ -22,7 +22,7 @@ function Homepage() {
           },
         }}
       >
-        <Box sx={{ minHeight: { xs: "75vh", sm: "75vh", md: "88vh" } }}>
+        <Box sx={{ pt: { xs: 10, md: 14 }, pb: { xs: 10, md: 14 } }}>
           <SliderHomePage />
         </Box>
 

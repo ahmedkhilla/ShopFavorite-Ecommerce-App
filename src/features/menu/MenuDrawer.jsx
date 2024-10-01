@@ -86,8 +86,8 @@ function MenuDrawer() {
           <ListItem disablePadding>
             <ListItemButton
               onClick={() => {
-                isAuthenticated ? navigate("/favorite") : navigate("/register");
                 dispatch({ type: "drawer/toggle", payload: false });
+                navigate("/favorite");
               }}
             >
               <ListItemIcon>
@@ -100,7 +100,7 @@ function MenuDrawer() {
           <ListItem disablePadding>
             <ListItemButton
               onClick={() => {
-                isAuthenticated ? navigate("/cart") : navigate("/register");
+                navigate("/cart");
                 dispatch({ type: "drawer/toggle", payload: false });
               }}
             >

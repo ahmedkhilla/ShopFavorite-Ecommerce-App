@@ -10,12 +10,31 @@ import PageNav from "../features/page-nav/PageNav";
 import NoFavoriteImage from "../assets/noFavorite.png";
 import { useProducts } from "../contexts/ProductsContext";
 import Footer from "../features/footer/Footer";
+import { useAuth } from "../contexts/AuthContext";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function FavoritePage() {
   const { products, isLoading } = useProducts();
-
   const favoriteProducts = products.filter(
     (product) => product.favoriteStatus === true
+  );
+
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(
+    function () {
+      if (!isAuthenticated) {
+        navigate("/register", {
+          state: {
+            previousURL: location.pathname,
+          },
+        });
+      }
+    },
+    [isAuthenticated, navigate, location]
   );
 
   return (

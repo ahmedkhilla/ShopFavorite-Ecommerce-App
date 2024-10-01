@@ -6,13 +6,12 @@ import FirstHomePage from "../../assets/homePage-1.jpg";
 import SecondHomePage from "../../assets/homepage-2.jpg";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-// import ThirdHomePage from "../../assets/homePage-3.jpg";
 function SliderHomePage() {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   var settings = {
     dots: true,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 10000,
     infinite: true,
     speed: 300,
@@ -26,19 +25,29 @@ function SliderHomePage() {
 
   return (
     <Slider {...settings}>
-      <Box sx={{ width: "100%", pt: 7 }}>
+      <Box>
         <Grid
           container
-          alignItems="center"
-          justifyContent="center"
-          sx={{ mt: 0 }}
+          sx={{
+            height: { xs: 300, md: 500, lg: 600 },
+            alignItems: { md: "center" },
+          }}
         >
-          <Grid item xs={12} sm={6} md={6} lg={5} sx={{ mb: 2 }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={6}
+            lg={7}
+            sx={{
+              width: { xs: "90%" },
+              mx: { xs: "auto" },
+            }}
+          >
             <Box
               sx={{
-                pr: 3,
-                maxWidth: { xs: "80%", sm: "100%", md: "430px" },
-                m: { xs: "0 auto" },
+                width: "100%",
+                mx: "auto",
               }}
             >
               <Typography
@@ -47,7 +56,7 @@ function SliderHomePage() {
                 sx={{
                   fontWeight: 700,
                   color: "#1B1C57",
-                  fontSize: { xs: 30, md: 40 },
+                  fontSize: { xs: 32, md: 40 },
                   textTransform: "capitalize",
                   mb: 3,
                 }}
@@ -66,7 +75,7 @@ function SliderHomePage() {
                 <br /> easily here
               </Typography>
 
-              <Typography sx={{ color: "#626687", mb: 6 }}>
+              <Typography sx={{ color: "#626687", mb: 5 }}>
                 Everything you need about finding your product, where it will be
                 easier for you
               </Typography>
@@ -99,21 +108,19 @@ function SliderHomePage() {
               )}
             </Box>
           </Grid>
+
           <Grid
             item
-            xs={12}
             sm={6}
             md={6}
-            lg={6}
-            sx={{ display: { xs: "none", sm: "block" } }}
+            lg={5}
+            sx={{ display: { xs: "none", md: "block" } }}
           >
-            <Box sx={{ width: "100%" }}>
+            <Box>
               <Box
                 sx={{
-                  width: "75%",
-                  height: { sm: "50vh", md: "65vh" },
-                  borderRadius: "12px",
-                  margin: "0 auto",
+                  width: "100%",
+                  height: "100%",
                 }}
               >
                 <img
@@ -121,6 +128,7 @@ function SliderHomePage() {
                     width: "100%",
                     height: "100%",
                     borderRadius: "12px",
+                    objectFit: "cover",
                   }}
                   src={FirstHomePage}
                   alt="main page slider 1"
@@ -130,19 +138,30 @@ function SliderHomePage() {
           </Grid>
         </Grid>
       </Box>
-      <Box sx={{ width: "100%", pt: 7 }}>
+
+      <Box>
         <Grid
           container
-          alignItems="center"
-          justifyContent="center"
-          sx={{ mt: 0 }}
+          sx={{
+            height: { xs: 300, md: 500, lg: 600 },
+            alignItems: { md: "center" },
+          }}
         >
-          <Grid item xs={12} sm={6} md={6} lg={5} sx={{ mb: 2 }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={6}
+            lg={7}
+            sx={{
+              width: { xs: "90%" },
+              mx: { xs: "auto" },
+            }}
+          >
             <Box
               sx={{
-                pr: 3,
-                maxWidth: { xs: "80%", sm: "100%", md: "430px" },
-                m: { xs: "0 auto" },
+                width: "100%",
+                mx: "auto",
               }}
             >
               <Typography
@@ -151,7 +170,7 @@ function SliderHomePage() {
                 sx={{
                   fontWeight: 700,
                   color: "#1B1C57",
-                  fontSize: 40,
+                  fontSize: { xs: 32, md: 40 },
                   textTransform: "capitalize",
                   lineHeight: 1.3,
                   mb: 3,
@@ -165,13 +184,12 @@ function SliderHomePage() {
                   }}
                 >
                   {" "}
-                  the power
+                  the <br /> power
                 </span>{" "}
-                <br />
                 of Smart Shopping
               </Typography>
 
-              <Typography sx={{ color: "#626687", mb: 6 }}>
+              <Typography sx={{ color: "#626687", mb: 5 }}>
                 Everything you need about finding your product, where it will be
                 easier for you
               </Typography>
@@ -188,21 +206,19 @@ function SliderHomePage() {
               </Button>
             </Box>
           </Grid>
+
           <Grid
             item
-            xs={12}
             sm={6}
             md={6}
-            lg={6}
-            sx={{ display: { xs: "none", sm: "block" } }}
+            lg={5}
+            sx={{ display: { xs: "none", md: "block" } }}
           >
-            <Box sx={{ width: "100%" }}>
+            <Box>
               <Box
                 sx={{
-                  width: "75%",
-                  height: { sm: "50vh", md: "65vh" },
-                  borderRadius: "12px",
-                  margin: "0 auto",
+                  width: "100%",
+                  height: "100%",
                 }}
               >
                 <img
@@ -210,8 +226,9 @@ function SliderHomePage() {
                     width: "100%",
                     height: "100%",
                     borderRadius: "12px",
+                    objectFit: "cover",
                   }}
-                  src={SecondHomePage}
+                  src={FirstHomePage}
                   alt="main page slider 1"
                 />
               </Box>
@@ -219,19 +236,30 @@ function SliderHomePage() {
           </Grid>
         </Grid>
       </Box>
-      <Box sx={{ width: "100%", pt: 7 }}>
+
+      <Box>
         <Grid
           container
-          alignItems="center"
-          justifyContent="center"
-          sx={{ mt: 0 }}
+          sx={{
+            height: { xs: 300, md: 500, lg: 600 },
+            alignItems: { md: "center" },
+          }}
         >
-          <Grid item xs={12} sm={6} md={6} lg={5} sx={{ mb: 2 }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={6}
+            lg={7}
+            sx={{
+              width: { xs: "90%" },
+              mx: { xs: "auto" },
+            }}
+          >
             <Box
               sx={{
-                pr: 3,
-                maxWidth: { xs: "80%", sm: "100%", md: "430px" },
-                m: { xs: "0 auto" },
+                width: "100%",
+                mx: "auto",
               }}
             >
               <Typography
@@ -240,7 +268,7 @@ function SliderHomePage() {
                 sx={{
                   fontWeight: 700,
                   color: "#1B1C57",
-                  fontSize: 40,
+                  fontSize: { xs: 32, md: 40 },
                   textTransform: "capitalize",
                   mb: 3,
                 }}
@@ -260,7 +288,7 @@ function SliderHomePage() {
                 Opportunities
               </Typography>
 
-              <Typography sx={{ color: "#626687", mb: 6 }}>
+              <Typography sx={{ color: "#626687", mb: 4 }}>
                 Become a part of our community and enjoy exclusive benefits.
                 Stay ahead with the latest trends and offers.
               </Typography>
@@ -277,21 +305,19 @@ function SliderHomePage() {
               </Button>
             </Box>
           </Grid>
+
           <Grid
             item
-            xs={12}
             sm={6}
             md={6}
-            lg={6}
-            sx={{ display: { xs: "none", sm: "block" } }}
+            lg={5}
+            sx={{ display: { xs: "none", md: "block" } }}
           >
-            <Box sx={{ width: "100%" }}>
+            <Box>
               <Box
                 sx={{
-                  width: "75%",
-                  height: { sm: "50vh", md: "65vh" },
-                  borderRadius: "12px",
-                  margin: "0 auto",
+                  width: "100%",
+                  height: "100%",
                 }}
               >
                 <img
@@ -299,6 +325,7 @@ function SliderHomePage() {
                     width: "100%",
                     height: "100%",
                     borderRadius: "12px",
+                    objectFit: "cover",
                   }}
                   src={FirstHomePage}
                   alt="main page slider 1"

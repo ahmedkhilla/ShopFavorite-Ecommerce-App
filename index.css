@@ -21,6 +21,5 @@ body {
   color: #000;
 }
 ul.slick-dots {
-  bottom: -60px;
-  /* right: 60px; */
+  bottom: -20px;
 }
